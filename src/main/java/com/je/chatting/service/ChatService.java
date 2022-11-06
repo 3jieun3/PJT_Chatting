@@ -2,13 +2,13 @@ package com.je.chatting.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.je.chatting.domain.*;
+import com.je.chatting.repository.ChatRoomRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.*;
 
@@ -18,28 +18,21 @@ import java.util.*;
 public class ChatService {
 
     private final ObjectMapper objectMapper;
-    private Map<String, ChatRoom> chatRoomMap;  // 모든 채팅방 정보
-
-    @PostConstruct
-    private void init() {
-        chatRoomMap = new LinkedHashMap<>();
-    }
+    private final ChatRoomRepository chatRoomRepository;
 
     /* 채팅방 전체 목록 조회 */
     public List<ChatRoom> findAllRoom() {
-        return new ArrayList<>(chatRoomMap.values());
+        return chatRoomRepository.findAllRoom();
     }
 
     /* 채팅방 번호로 조회 */
     public ChatRoom findRoomById(String roomId) {
-        return chatRoomMap.get(roomId);
+        return chatRoomRepository.findRoomById(roomId);
     }
 
     /* 채팅방 생성 */
     public ChatRoom createRoom(String name) {
-        ChatRoom chatRoom = new ChatRoom(name);
-        chatRoomMap.put(chatRoom.getRoomId(), chatRoom);
-        return chatRoom;
+        return chatRoomRepository.createRoom(name);
     }
 
     /* 메시지 전송 : 지정한 Web Socket session 에 메시지 전송 */
