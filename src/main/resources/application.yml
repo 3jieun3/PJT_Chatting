@@ -21,6 +21,14 @@ spring:
     generate-ddl: false
     database: mysql
 
+  # Kafka 에서 통신할 내용 설정
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: consumerGroup1
+    template:
+      default-topic: kafkaTest
+
 logging:
   level:
     root: info

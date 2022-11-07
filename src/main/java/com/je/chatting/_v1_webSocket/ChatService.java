@@ -1,8 +1,6 @@
-package com.je.chatting.service;
+package com.je.chatting._v1_webSocket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.je.chatting.domain.*;
-import com.je.chatting.repository.ChatRoomRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -10,7 +8,7 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor

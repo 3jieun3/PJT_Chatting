@@ -1,11 +1,12 @@
-package com.je.chatting.domain;
+package com.je.chatting._v1_webSocket;
 
-import com.je.chatting.service.ChatService;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.socket.WebSocketSession;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 
 @Slf4j
 @Getter
@@ -15,12 +16,12 @@ public class ChatRoom {
 
     private final String name;    // 채팅방 이름
 
+    private final Set<WebSocketSession> sessionList = new HashSet<>();  // 채팅방에 접속 중인 세션 리스트
+
     public ChatRoom(String name) {
         this.roomId = UUID.randomUUID().toString();
         this.name = name;
     }
-
-    private final Set<WebSocketSession> sessionList = new HashSet<>();  // 채팅방에 접속 중인 세션 리스트
 
     public void handleActions(WebSocketSession session, ChatMessage chatMessage, ChatService chatService) {
         if (chatMessage.getType().equals(ChatMessage.MessageType.JOIN)) {           /* 채팅방 접속 시 */

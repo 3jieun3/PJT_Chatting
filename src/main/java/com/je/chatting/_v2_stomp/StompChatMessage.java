@@ -1,18 +1,17 @@
-package com.je.chatting.domain;
+package com.je.chatting._v2_stomp;
 
 import lombok.Getter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Getter
-public class ChatMessage implements Serializable {
+public class StompChatMessage implements Serializable {
 
     private MessageType type;       // 메시지 타입
 
-    private String roomId;          // 채팅방 번호 (topic 역할)
+    private String roomName;        // 채팅방명
 
     private String sender;          // 보내는 사람
 

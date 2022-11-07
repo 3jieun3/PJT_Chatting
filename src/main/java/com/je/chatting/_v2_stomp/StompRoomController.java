@@ -1,7 +1,5 @@
-package com.je.chatting.controller;
+package com.je.chatting._v2_stomp;
 
-import com.je.chatting.domain.ChatRoom;
-import com.je.chatting.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -11,30 +9,30 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/chat")
-public class RoomController {
+@RequestMapping("/stomp/chat")
+public class StompRoomController {
 
-    private final ChatService chatService;
+    private final StompChatService stompChatService;
 
     /* 채팅방 목록 조회 */
     @GetMapping("/rooms")
-    public List<ChatRoom> getRooms() {
+    public List<StompChatRoom> getStompRooms() {
         log.info("Getting ChatRoom List");
-        return chatService.findAllRoom();
+        return stompChatService.findAllStompRoom();
     }
 
     /* 채팅방 조회 */
     @GetMapping("/room/{roomId}")
-    public List<ChatRoom> getRoom(@PathVariable String roomId) {
+    public StompChatRoom getStompRoom(@PathVariable String roomId) {
         log.info("Getting ChatRoom {}", roomId);
-        return chatService.findAllRoom();
+        return stompChatService.findStompRoomById(roomId);
     }
 
     /* 채팅방 생성 */
     @PostMapping("/room")
-    public ChatRoom createRoom(@RequestParam String name) {
+    public StompChatRoom createStompRoom(@RequestParam String name) {
         log.info("ChatRoom created : {}", name);
-        return chatService.createRoom(name);
+        return stompChatService.createStompRoom(name);
     }
 
 }
