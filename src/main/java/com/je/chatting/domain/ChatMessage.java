@@ -1,7 +1,6 @@
 package com.je.chatting.domain;
 
 import lombok.Getter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

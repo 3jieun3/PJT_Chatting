@@ -11,22 +11,29 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/chat")
-public class ChatController {
+@RequestMapping("/chat")
+public class RoomController {
 
     private final ChatService chatService;
 
     /* 채팅방 목록 조회 */
-    @GetMapping
-    public List<ChatRoom> findAllRoom() {
+    @GetMapping("/rooms")
+    public List<ChatRoom> getRooms() {
         log.info("Getting ChatRoom List");
         return chatService.findAllRoom();
     }
 
+    /* 채팅방 조회 */
+    @GetMapping("/room/{roomId}")
+    public List<ChatRoom> getRoom(@PathVariable String roomId) {
+        log.info("Getting ChatRoom {}", roomId);
+        return chatService.findAllRoom();
+    }
+
     /* 채팅방 생성 */
-    @PostMapping
+    @PostMapping("/room")
     public ChatRoom createRoom(@RequestParam String name) {
-        log.info("ChatRoom created. : {}", name);
+        log.info("ChatRoom created : {}", name);
         return chatService.createRoom(name);
     }
 

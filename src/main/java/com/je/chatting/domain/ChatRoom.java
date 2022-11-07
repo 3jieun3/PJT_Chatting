@@ -1,12 +1,13 @@
 package com.je.chatting.domain;
 
-//import com.je.chatting.service.ChatService;
 import com.je.chatting.service.ChatService;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.socket.WebSocketSession;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 
 @Slf4j
 @Getter
