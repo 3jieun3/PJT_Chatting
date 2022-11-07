@@ -1,6 +1,5 @@
-package com.je.chatting.config;
+package com.je.chatting._v1_webSocket;
 
-import com.je.chatting.handler.WebSocketChatHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.*;

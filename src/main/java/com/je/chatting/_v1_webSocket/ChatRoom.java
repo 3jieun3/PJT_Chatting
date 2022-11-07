@@ -1,6 +1,5 @@
-package com.je.chatting.domain;
+package com.je.chatting._v1_webSocket;
 
-import com.je.chatting.service.ChatService;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.socket.WebSocketSession;

@@ -1,8 +1,6 @@
-package com.je.chatting.service;
+package com.je.chatting._v1_webSocket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.je.chatting.domain.ChatRoom;
-import com.je.chatting.repository.ChatRoomRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

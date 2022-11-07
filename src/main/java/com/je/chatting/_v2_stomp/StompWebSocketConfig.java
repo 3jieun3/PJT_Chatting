@@ -1,4 +1,4 @@
-package com.je.chatting.config;
+package com.je.chatting._v2_stomp;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
