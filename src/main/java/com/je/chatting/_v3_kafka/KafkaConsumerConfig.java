@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
+import org.springframework.kafka.core.ConsumerFactory;
+import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import java.util.HashMap;
@@ -27,6 +30,18 @@ public class KafkaConsumerConfig {
     private final String KAFKA_TOPIC;   // 토픽
 
     @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, KafkaChatMessage> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, KafkaChatMessage> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(kafkaConsumerFactory());
+        return factory;
+    }
+
+    @Bean
+    public ConsumerFactory<String, KafkaChatMessage> kafkaConsumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(kafkaConsumerConfig(), new StringDeserializer(), new JsonDeserializer<>(KafkaChatMessage.class));
+    }
+
+    @Bean
     public Map<String, Object> kafkaConsumerConfig() {
         Map<String, Object> configMap = new HashMap<>();
         // 브로커 주소
@@ -35,6 +50,8 @@ public class KafkaConsumerConfig {
         configMap.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         // 데이터의 value 값 역직렬화 : KafkaChatMessage 타입 = Json
         configMap.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        //
+        configMap.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         // consumer 그룹 id
         configMap.put("group.id", this.KAFKA_GROUP);
         return configMap;
