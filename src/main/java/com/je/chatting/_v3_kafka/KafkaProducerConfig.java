@@ -26,7 +26,7 @@ public class KafkaProducerConfig {
 
     @Bean
     public ProducerFactory<String, KafkaChatMessage> kafkaProducerFactory() {
-        return new DefaultKafkaProducerFactory<>(kafkaProducerConfig());
+        return new DefaultKafkaProducerFactory<>(kafkaProducerConfig(), new StringSerializer(), new JsonSerializer<>());
     }
 
     @Bean
