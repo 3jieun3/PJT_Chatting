@@ -18,8 +18,8 @@ public class KafkaConsumer {
             topics = "${spring.kafka.template.default-topic}",
             groupId = "${spring.kafka.consumer.group-id}"
     )
-    public void receive(KafkaChatMessage message) {
-        log.info("sending message: {} via kafka listener", message);
+    public void receive(String message) {
+        log.info("received message: {}", message);
         messagingTemplate.convertAndSend("/topic/group", message);
     }
 
