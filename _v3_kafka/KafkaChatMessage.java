@@ -9,9 +9,7 @@ import java.time.format.DateTimeFormatter;
 @Getter
 public class KafkaChatMessage implements Serializable {
 
-    private MessageType type;       // 메시지 타입
-
-    private String roomName;        // 채팅방명
+//    private MessageType type;       // 메시지 타입
 
     private String sender;          // 보내는 사람
 
@@ -29,7 +27,7 @@ public class KafkaChatMessage implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("%s : %s [%s/%s]", sender, content, type,
+        return String.format("%s : %s [%s]", sender, content,
                 sendAt.format(DateTimeFormatter.ofPattern("yy-MM-dd(EEE) hh:mm:ss a")));
     }
 }
