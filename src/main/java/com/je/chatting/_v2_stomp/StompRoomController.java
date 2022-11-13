@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/stomp/chat")
 public class StompRoomController {
 
-    private final StompChatService stompChatService;
+    private final StompChatRoomService stompChatService;
 
     /* 채팅방 목록 조회 */
     @GetMapping("/rooms")

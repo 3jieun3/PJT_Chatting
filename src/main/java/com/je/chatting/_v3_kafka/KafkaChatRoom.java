@@ -11,7 +11,7 @@ public class KafkaChatRoom {
 
     private final String roomId;  // 채팅방 번호
 
-    private final String name;    // 채팅방 이름
+    private final String name;    // 채팅방 이름 (중복 불가능)
 
     public KafkaChatRoom(String name) {
         this.roomId = UUID.randomUUID().toString();

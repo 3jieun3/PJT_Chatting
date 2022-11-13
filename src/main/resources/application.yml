@@ -27,7 +27,7 @@ spring:
       bootstrap-servers: localhost:9092
     consumer:
       bootstrap-servers: localhost:9092
-      group-id: consumerGroup1
+      group-id: testGroup1
     template:
       default-topic: testTopic
 

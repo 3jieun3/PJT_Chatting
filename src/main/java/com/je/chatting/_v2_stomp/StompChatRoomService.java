@@ -1,6 +1,5 @@
 package com.je.chatting._v2_stomp;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -10,7 +9,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class StompChatService {
+public class StompChatRoomService {
 
     private final StompChatRoomRepository chatRoomRepository;
 

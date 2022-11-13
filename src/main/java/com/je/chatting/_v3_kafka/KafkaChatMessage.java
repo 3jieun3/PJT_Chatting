@@ -11,6 +11,8 @@ public class KafkaChatMessage implements Serializable {
 
     private String sender;          // 보내는 사람
 
+    private String roomName;          // 채팅방 이름
+
     private String content;         // 내용
 
     private final LocalDateTime sendAt = LocalDateTime.now();   // 전송 시각
