@@ -11,7 +11,7 @@ public class KafkaChatMessage implements Serializable {
 
     private String sender;          // 보내는 사람
 
-    private String roomName;          // 채팅방 이름
+    private String roomId;          // 채팅방 ID
 
     private String content;         // 내용
 
@@ -19,7 +19,7 @@ public class KafkaChatMessage implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("%s : %s [%s]", sender, content,
-                sendAt.format(DateTimeFormatter.ofPattern("yy-MM-dd(EEE) hh:mm:ss a")));
+        return String.format("{ %s: %s [%s] (%s) }", sender, content,
+                sendAt.format(DateTimeFormatter.ofPattern("yy-MM-dd(EEE) hh:mm:ss a")), roomId);
     }
 }

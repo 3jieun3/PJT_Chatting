@@ -36,7 +36,7 @@ public class KafkaRoomController {
     }
 
     /* 채팅방 이름 중복 체크 */
-    @PostMapping("/room/dup_check")
+    @GetMapping("/room/dup_check")
     public Boolean isDuplicatedName(@RequestParam String name) {
         log.info("ChatRoom Name Duplication Check : {}", name);
         return kafkaChatRoomService.isDuplicatedName(name);

@@ -13,6 +13,8 @@ public class KafkaConsumer {
 
     private final SimpMessageSendingOperations messagingTemplate;
 
+    private final KafkaChatRoomService kafkaChatRoomService;
+
     // kafka 로부터 메시지 받기 위한 어노테이션
     @KafkaListener(
             topics = "${spring.kafka.template.default-topic}",
@@ -20,7 +22,9 @@ public class KafkaConsumer {
     )
     public void receive(KafkaChatMessage message) {
         log.info("received message: {}", message.toString());
-        messagingTemplate.convertAndSend("/topic/room" + message.getRoomName(), message);
+        // roomId 로 해당 채팅방 조회
+        KafkaChatRoom kafkaChatRoom = kafkaChatRoomService.findKafkaRoomById(message.getRoomId());
+        messagingTemplate.convertAndSend("/topic/room/" + kafkaChatRoom.getName(), message);
     }
 
 }
