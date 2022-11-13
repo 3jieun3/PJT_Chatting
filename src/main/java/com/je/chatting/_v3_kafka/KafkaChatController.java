@@ -17,14 +17,7 @@ public class KafkaChatController {
     private final KafkaProducer kafkaProducer;
 
     @MessageMapping("/message")
-    public void sendMessage(String message) {
-        log.info("sending message: {}", message);
+    public void sendMessage(KafkaChatMessage message) {
         kafkaProducer.send(this.KAFKA_TOPIC, message);
     }
-
-//    @MessageMapping("/chat/message")
-//    public void sendMessage(ChatMessage message) {
-//        log.info("sending message: {}", message);
-//        kafkaProducer.send("testTopic", message);
-//    }
 }

@@ -10,6 +10,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,12 +33,14 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public ProducerFactory<String, String> kafkaProducerFactory() {
-        return new DefaultKafkaProducerFactory<>(kafkaProducerConfiguration(), new StringSerializer(), new StringSerializer());
+    public ProducerFactory<String, KafkaChatMessage> kafkaProducerFactory() {
+        return new DefaultKafkaProducerFactory<>(kafkaProducerConfiguration(),
+                new StringSerializer(),
+                new JsonSerializer<KafkaChatMessage>());
     }
 
     @Bean
-    public KafkaTemplate<String, String> kafkaTemplate() {
+    public KafkaTemplate<String, KafkaChatMessage> kafkaTemplate() {
         return new KafkaTemplate<>(kafkaProducerFactory());
     }
 
@@ -46,7 +49,7 @@ public class KafkaProducerConfig {
         Map<String, Object> configMap = new HashMap<>();
         configMap.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, this.KAFKA_BROKER);
         configMap.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        configMap.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        configMap.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return configMap;
     }
 }
