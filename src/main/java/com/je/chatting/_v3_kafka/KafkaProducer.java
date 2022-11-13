@@ -16,6 +16,6 @@ public class KafkaProducer {
 
     public void send(@Value("${spring.kafka.template.default-topic}") String kafka_topic, KafkaChatMessage message) {
         log.info("sending message: {} to topic: {}", message.toString(), kafka_topic);
-        this.kafkaTemplate.send(kafka_topic, message);     // send to clients via websocket(STOMP)
+        this.kafkaTemplate.send(kafka_topic, message);     // send to clients via 
     }
 }

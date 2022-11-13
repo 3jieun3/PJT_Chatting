@@ -20,7 +20,7 @@ public class KafkaConsumer {
     )
     public void receive(KafkaChatMessage message) {
         log.info("received message: {}", message.toString());
-        messagingTemplate.convertAndSend("/topic/group", message);
+        messagingTemplate.convertAndSend("/topic/room", message);
     }
 
 }
