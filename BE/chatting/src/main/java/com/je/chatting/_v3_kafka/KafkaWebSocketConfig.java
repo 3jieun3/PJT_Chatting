@@ -15,7 +15,7 @@ public class KafkaWebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/kafka/je-chat")     // Endpoint
-                .setAllowedOrigins("*");                 // 허용 도메인
+                .setAllowedOriginPatterns("*").withSockJS();                 // 허용 도메인
     }
 
     // app 내부에서 사용할 path 지정
