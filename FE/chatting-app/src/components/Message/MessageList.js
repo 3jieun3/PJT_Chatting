@@ -1,5 +1,5 @@
 import React from 'react';
-import randomColor from '../../App'
+import { randomColor } from "../../utils/common";
 
 function MessageList({ messages, currentUser }) {
   
