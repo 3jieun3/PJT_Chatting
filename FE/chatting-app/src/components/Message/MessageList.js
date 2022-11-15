@@ -1,5 +1,5 @@
 import React from 'react';
-import randomColor from '../../App'
+import { randomColor } from "../../utils/common";
 
 function MessageList({ messages, currentUser }) {
   
@@ -21,7 +21,7 @@ function MessageList({ messages, currentUser }) {
 
   return (
     <ul className='message-list'>
-      { messages.map(msg => renderMessage(msg)) }
+      { messages.map((msg) => renderMessage(msg)) }
     </ul>
   );
 }
