@@ -7,15 +7,15 @@ import LoginForm from "./components/Login/LoginForm";
 import InputForm from "./components/Input/InputForm";
 import MessageList from "./components/Message/MessageList";
 
-// import chatAPI from "./services/chatApi";
+import chatService from "./services/chatService";
 import { randomColor } from "./utils/common";
 
 
 function App() {
 
   const [user, setUser] = useState(null);
-  const [messages] = useState([]);
-
+  const [messages, setMessage] = useState([]);
+  
   const $websocket = useRef(null);
 
   const handleLoginSubmit = (name) => {
@@ -24,13 +24,13 @@ function App() {
   };
 
   const handleSendMessage = (sendText) => {
-    console.log(user.name + " 메시지 전송 : " + sendText);
-    let send_message = {
-      sender: user.name,
-      content: sendText,
-      roomId: "3124e7b4-2a57-4412-8c71-e902d10ab342"
-    }
-    $websocket.current.sendMessage("/pub/message", JSON.stringify(send_message));
+    console.log("메시지 전송 : " + sendText);
+    chatService.sendMessage(user, sendText, $websocket);
+  };
+
+  const handleReceiveMessage = (receivedMsg) => {
+    console.log("메시지 수신 : " + receivedMsg);
+    setMessage(messages.concat(receivedMsg));
   };
 
   return (
@@ -39,8 +39,10 @@ function App() {
           <div className="chat-container">
             <SockJsClient
                url="http://localhost:8080/kafka/je-chat"
-               topics={["/topic/room/APPLE_CHAT"]}    
-               onMessage={msg => console.log(msg)}  
+               topics={["/topic/room/APPLE_CHAT"]}
+               onConnect={chatService.onConnected}
+               onDisconnect={chatService.onDisconnected}    
+               onMessage={handleReceiveMessage}  
                ref={$websocket}/>
             <MessageList messages={messages} currentUser={user}/>
             <InputForm handleOnSendMessage={handleSendMessage}/>

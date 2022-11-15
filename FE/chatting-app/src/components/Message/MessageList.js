@@ -21,7 +21,7 @@ function MessageList({ messages, currentUser }) {
 
   return (
     <ul className='message-list'>
-      { messages.map(msg => renderMessage(msg)) }
+      { messages.map((msg) => renderMessage(msg)) }
     </ul>
   );
 }
