@@ -15,6 +15,6 @@ public class KafkaProducer {
 
     public void send(String topic, KafkaChatMessage message) {
         log.info("sending message: {} to topic: {}", message.toString(), topic);
-        this.kafkaTemplate.send(topic, message);     // send to clients
+        this.kafkaTemplate.send(topic, message);
     }
 }

@@ -1,6 +1,13 @@
 
 const chatService = {
 
+  requestChat: (currentUser, clientRef) => {
+    let data = {
+      sender: currentUser.name
+    };
+    clientRef.current.sendMessage("/pub/join", JSON.stringify(data));
+  },
+
   onConnected: () => {
     console.log("Connection Successfully!");
   },

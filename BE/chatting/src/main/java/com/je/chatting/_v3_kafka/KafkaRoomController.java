@@ -34,6 +34,11 @@ public class KafkaRoomController {
         log.info("ChatRoom created : {}", name);
         return kafkaChatRoomService.createKafkaRoom(name);
     }
+    @PostMapping("/room/req")
+    public KafkaChatRoom createStompRoom(@RequestBody ) {
+        log.info("ChatRoom created : {}", name);
+        return kafkaChatRoomService.createKafkaRoom(name);
+    }
 
     /* 채팅방 이름 중복 체크 */
     @GetMapping("/room/dup_check")

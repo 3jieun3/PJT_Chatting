@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import SockJsClient from "react-stomp";
 
+import Button from '@material-ui/core/Button';
+
 import "./App.css";
 
 import LoginForm from "./components/Login/LoginForm";
@@ -37,6 +39,8 @@ function App() {
     <div className="App">
       { user !== null ? (
           <div className="chat-container">
+            <Button variant="contained" color="primary" onClick={chatService.requestChat(user, $websocket)}>Go Chat!</Button>
+
             <SockJsClient
                url="http://localhost:8080/kafka/je-chat"
                topics={["/topic/room/APPLE_CHAT"]}
