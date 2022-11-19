@@ -6,6 +6,22 @@
   text-align: center;
 }
 
+.chat-room-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  margin: 2rem 15rem;
+}
+
+.chat-room-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 6rem;
+}
+
+
+
 .App-header {
   background-color: #262626;
   overflow: visible;
