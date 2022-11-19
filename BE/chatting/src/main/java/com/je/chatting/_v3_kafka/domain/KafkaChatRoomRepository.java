@@ -1,4 +1,4 @@
-package com.je.chatting._v3_kafka;
+package com.je.chatting._v3_kafka.domain;
 
 import org.springframework.stereotype.Repository;
 

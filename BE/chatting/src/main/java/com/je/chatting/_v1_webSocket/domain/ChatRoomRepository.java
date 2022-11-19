@@ -1,14 +1,15 @@
-package com.je.chatting._v2_stomp;
+package com.je.chatting._v1_webSocket.domain;
 
+import com.je.chatting._v1_webSocket.domain.ChatRoom;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
 
 @Repository
-public class StompChatRoomRepository {
+public class ChatRoomRepository {
 
-    private Map<String, StompChatRoom> chatRoomMap;
+    private Map<String, ChatRoom> chatRoomMap;  // 모든 채팅방 정보
 
     @PostConstruct
     private void init() {
@@ -16,20 +17,20 @@ public class StompChatRoomRepository {
     }
 
     /* 채팅방 전체 목록 최신순 조회 */
-    public List<StompChatRoom> findAllRoom() {
-        List<StompChatRoom> chatRoomList =  new ArrayList<>(chatRoomMap.values());
+    public List<ChatRoom> findAllRoom() {
+        List<ChatRoom> chatRoomList =  new ArrayList<>(chatRoomMap.values());
         Collections.reverse(chatRoomList);
         return chatRoomList;
     }
 
     /* 채팅방 번호로 조회 */
-    public StompChatRoom findRoomById(String roomId) {
+    public ChatRoom findRoomById(String roomId) {
         return chatRoomMap.get(roomId);
     }
 
     /* 채팅방 생성 */
-    public StompChatRoom createRoom(String name) {
-        StompChatRoom chatRoom = new StompChatRoom(name);
+    public ChatRoom createRoom(String name) {
+        ChatRoom chatRoom = new ChatRoom(name);
         chatRoomMap.put(chatRoom.getRoomId(), chatRoom);
         return chatRoom;
     }

@@ -1,4 +1,4 @@
-package com.je.chatting._v3_kafka;
+package com.je.chatting._v3_kafka.domain;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

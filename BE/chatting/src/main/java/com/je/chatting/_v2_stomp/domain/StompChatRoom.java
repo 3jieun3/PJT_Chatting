@@ -1,4 +1,4 @@
-package com.je.chatting._v2_stomp;
+package com.je.chatting._v2_stomp.domain;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

@@ -1,5 +1,7 @@
-package com.je.chatting._v3_kafka;
+package com.je.chatting._v3_kafka.controller;
 
+import com.je.chatting._v3_kafka.domain.KafkaChatMessage;
+import com.je.chatting._v3_kafka.service.KafkaProducer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

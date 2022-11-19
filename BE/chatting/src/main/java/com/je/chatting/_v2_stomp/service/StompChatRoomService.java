@@ -1,5 +1,7 @@
-package com.je.chatting._v2_stomp;
+package com.je.chatting._v2_stomp.service;
 
+import com.je.chatting._v2_stomp.domain.StompChatRoom;
+import com.je.chatting._v2_stomp.domain.StompChatRoomRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

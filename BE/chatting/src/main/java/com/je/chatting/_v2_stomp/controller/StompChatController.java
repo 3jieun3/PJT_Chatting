@@ -1,5 +1,6 @@
-package com.je.chatting._v2_stomp;
+package com.je.chatting._v2_stomp.controller;
 
+import com.je.chatting._v2_stomp.domain.StompChatMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.MessageMapping;

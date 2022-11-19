@@ -1,5 +1,6 @@
-package com.je.chatting._v3_kafka;
+package com.je.chatting._v3_kafka.config;
 
+import com.je.chatting._v3_kafka.domain.KafkaChatMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

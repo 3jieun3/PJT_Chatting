@@ -1,5 +1,7 @@
-package com.je.chatting._v3_kafka;
+package com.je.chatting._v3_kafka.service;
 
+import com.je.chatting._v3_kafka.domain.KafkaChatRoom;
+import com.je.chatting._v3_kafka.domain.KafkaChatRoomRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

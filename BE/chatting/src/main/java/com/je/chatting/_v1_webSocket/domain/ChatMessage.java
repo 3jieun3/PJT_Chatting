@@ -1,4 +1,4 @@
-package com.je.chatting._v2_stomp;
+package com.je.chatting._v1_webSocket.domain;
 
 import lombok.Getter;
 
@@ -7,11 +7,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Getter
-public class StompChatMessage implements Serializable {
+public class ChatMessage implements Serializable {
 
     private MessageType type;       // 메시지 타입
 
-    private String roomName;        // 채팅방명
+    private String roomId;          // 채팅방 번호 (topic 역할)
 
     private String sender;          // 보내는 사람
 

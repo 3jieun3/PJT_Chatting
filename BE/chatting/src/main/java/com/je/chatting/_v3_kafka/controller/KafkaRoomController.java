@@ -1,5 +1,7 @@
-package com.je.chatting._v3_kafka;
+package com.je.chatting._v3_kafka.controller;
 
+import com.je.chatting._v3_kafka.domain.KafkaChatRoom;
+import com.je.chatting._v3_kafka.service.KafkaChatRoomService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -31,11 +33,6 @@ public class KafkaRoomController {
     /* 채팅방 생성 */
     @PostMapping("/room")
     public KafkaChatRoom createStompRoom(@RequestParam String name) {
-        log.info("ChatRoom created : {}", name);
-        return kafkaChatRoomService.createKafkaRoom(name);
-    }
-    @PostMapping("/room/req")
-    public KafkaChatRoom createStompRoom(@RequestBody ) {
         log.info("ChatRoom created : {}", name);
         return kafkaChatRoomService.createKafkaRoom(name);
     }
