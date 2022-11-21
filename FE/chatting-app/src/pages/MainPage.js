@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "@material-ui/core";
+import { Button, Input } from "@material-ui/core";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 import ChatRoomList from "./../components/MainPage/ChatRoomList";
@@ -8,13 +8,31 @@ const MainPage = () => {
 
 	const [ chatRooms, setChatRooms ] = useState([{ roomId: "280a8a4d-a27f-4d01-b031-2a003cc4c039", roomName: "모여라!" }, { roomId: "280a8a4d-a27f-4d01-b031-2a003cc4c039", roomName: "채팅하자!" }]);
 
+	const [ isShow, setIsShow ] = useState(false);
+
+	const handleClick = () => {
+		setIsShow(!isShow);
+	}
+
 	return (
 		<div>
 			<h2>Chatting Rooms</h2>
+			<div>
+				{ isShow ? (
+						<TextField
+						id="filled-secondary"
+						label="Chatting Room Name"
+						variant="filled"
+						color="primary"
+					/>
+				) : null }
+			</div>
+
 			<Button 
 				variant="contained"
 				color="primary"
 				startIcon={<AddCircleIcon />}
+				onClick={handleClick}
 			>
 				채팅방 만들기
 			</Button>
